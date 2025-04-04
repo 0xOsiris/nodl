@@ -1,0 +1,26 @@
+[package]
+edition = "2024"
+name = "nodl"
+version = "0.1.0"
+
+[dependencies]
+alloy-provider = { version = "0.13.0", features = [
+    "txpool-api",
+    "net-api",
+    "engine-api",
+    "admin-api",
+] }
+alloy-transport = "0.13.0"
+alloy-transport-http = "0.13.0"
+alloy-rpc-types-admin = "0.13.0"
+alloy-rpc-types-eth = "0.13.0"
+alloy-rpc-types-txpool = "0.13.0"
+alloy-rpc-types-engine = "0.13.0"
+alloy-primitives = "0.8.24"
+
+tokio = { version = "1", features = ["full"] }
+reqwest = "0.12.15"
+eyre = "0.6.12"
+alloy-rpc-client = "0.13.0"
+clap = { version = "4.5.35", features = ["derive"] }
+serde_json = "1.0.140"

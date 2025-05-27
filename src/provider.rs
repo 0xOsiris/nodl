@@ -44,7 +44,7 @@ impl NodlProviderBuilder {
 
     pub fn build(self) -> eyre::Result<NodlProvider> {
         let mut headers = reqwest::header::HeaderMap::new();
-        if let Some(jwt) = self.jwt.clone() {
+        if let Some(jwt) = self.jwt {
             let auth = auth(jwt)?;
 
             let mut auth_value: HeaderValue =

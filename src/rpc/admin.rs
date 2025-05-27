@@ -45,6 +45,12 @@ pub enum AdminSubcommands {
         #[command(flatten)]
         args: RpcArgs,
     },
+
+    /// Returns the list of all connected peers.
+    Peers {
+        #[command(flatten)]
+        args: RpcArgs,
+    },
 }
 
 impl AdminSubcommands {
@@ -84,6 +90,13 @@ impl AdminSubcommands {
                     .url(args.rpc_url)
                     .build()?;
                 serde_json::to_string_pretty(&provider.node_info().await?)?
+            }
+            Self::Peers { args } => {
+                let provider = NodlProviderBuilder::default()
+                    .jwt(args.jwt)
+                    .url(args.rpc_url)
+                    .build()?;
+                serde_json::to_string_pretty(&provider.peers().await?)?
             }
         };
 
